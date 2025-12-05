@@ -1,0 +1,811 @@
+/* Дополнительные стили для улучшения сайта */
+
+/* Анимации и эффекты */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Эффект неонового свечения для заголовков */
+.neon-text {
+    text-shadow: 
+        0 0 5px #fff,
+        0 0 10px #ff4081,
+        0 0 15px #ff4081,
+        0 0 20px #ff4081;
+    animation: neonPulse 2s infinite alternate;
+}
+
+@keyframes neonPulse {
+    from {
+        text-shadow: 
+            0 0 5px #fff,
+            0 0 10px #ff4081,
+            0 0 15px #ff4081,
+            0 0 20px #ff4081;
+    }
+    to {
+        text-shadow: 
+            0 0 10px #fff,
+            0 0 20px #ff9ebb,
+            0 0 30px #ff9ebb,
+            0 0 40px #ff9ebb;
+    }
+}
+
+/* Эффект параллакса для разных слоев */
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Стили для счетчиков статистики */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(255, 158, 187, 0.1), rgba(255, 107, 157, 0.1));
+    border-radius: 20px;
+    border: 1px solid rgba(255, 158, 187, 0.3);
+}
+
+.stat-item {
+    text-align: center;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Стили для временной шкалы (timeline) */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    margin-bottom: 60px;
+    position: relative;
+    width: 45%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:nth-child(odd) {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.timeline-item:nth-child(even) {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.timeline-content {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border: 2px solid #ffe6f0;
+    position: relative;
+}
+
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+    right: -50px;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+    left: -50px;
+}
+
+.timeline-year {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+}
+
+/* Стили для всплывающих подсказок */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    border-bottom: 1px dotted var(--primary-color);
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--secondary-color) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Стили для кастомных чекбоксов и радиокнопок */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.custom-checkbox input {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.custom-checkbox input:checked + .checkmark {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.custom-checkbox input:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Стили для загрузчика (preloader) */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--light-color), white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader {
+    width: 80px;
+    height: 80px;
+    border: 5px solid #ffe6f0;
+    border-top: 5px solid var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Стили для карусели изображений */
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 500px;
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 107, 157, 0.8);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-button:hover {
+    background: var(--accent-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-button.prev {
+    left: 20px;
+}
+
+.carousel-button.next {
+    right: 20px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* Стили для галереи с эффектом masonry */
+.masonry-grid {
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.masonry-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 107, 157, 0.2);
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.masonry-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Стили для светлой и темной темы */
+.theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(45deg) scale(1.1);
+    background: var(--accent-color);
+}
+
+/* Темная тема */
+body.dark-theme {
+    background-color: #1a1a2e;
+    color: #e6e6e6;
+}
+
+body.dark-theme header {
+    background: linear-gradient(135deg, #d81b60, #880e4f);
+}
+
+body.dark-theme .hero {
+    background-color: #16213e;
+}
+
+body.dark-theme .gallery-section {
+    background-color: #0f3460;
+}
+
+body.dark-theme .gallery-item {
+    background-color: #1a1a2e;
+    border-color: #d81b60;
+}
+
+body.dark-theme .timeline-content {
+    background: #16213e;
+    border-color: #d81b60;
+}
+
+/* Стили для мобильного меню */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+    z-index: 999;
+    transition: right 0.3s ease;
+    padding: 80px 30px 30px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav.active {
+    right: 0;
+}
+
+.mobile-nav ul {
+    list-style: none;
+}
+
+.mobile-nav li {
+    margin-bottom: 20px;
+}
+
+.mobile-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(10px);
+}
+
+.close-mobile-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Стили для уведомлений */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+    max-width: 300px;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+/* Стили для кнопок соцсетей */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+}
+
+.social-link:hover {
+    transform: translateY(-5px) rotate(10deg);
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+}
+
+/* Стили для формы обратной связи */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ffe6f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 158, 187, 0.2);
+}
+
+/* Стили для модального окна с видео */
+.video-modal .modal-content {
+    max-width: 1000px;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Стили для прогресс-бара скролла */
+.progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    z-index: 1001;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Стили для интерактивных карточек */
+.interactive-card {
+    perspective: 1000px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.interactive-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.interactive-card:hover .interactive-card-inner {
+    transform: rotateY(180deg);
+}
+
+.interactive-card-front,
+.interactive-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.interactive-card-back {
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+    color: white;
+    transform: rotateY(180deg);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Стили для сетки с hover-эффектами */
+.hover-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.hover-item {
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.6s ease;
+}
+
+.hover-item:hover::before {
+    left: 100%;
+}
+
+.hover-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
+}
+
+/* Адаптивные стили для дополнительных элементов */
+@media (max-width: 992px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .masonry-grid {
+        column-count: 2;
+    }
+    
+    .hover-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        width: calc(100% - 80px);
+        margin-left: 80px !important;
+        margin-right: 0 !important;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content::before,
+    .timeline-item:nth-child(even) .timeline-content::before {
+        left: -50px;
+    }
+    
+    .carousel-slide {
+        height: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .masonry-grid {
+        column-count: 1;
+    }
+    
+    .hover-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-links {
+        flex-wrap: wrap;
+    }
+}
